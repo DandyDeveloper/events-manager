@@ -1,39 +1,48 @@
 {
   "name": "sample-test",
   "version": "0.0.1",
-  "description": "Sample test for new code check",
+  "description": "Express Project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec/*",
-    "server": "node server.js",
-    "start": "./node_modules/.bin/nf start -p 8887"
+    "test": "",
+    "start": "node server",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "eslint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shunjikonishi/sample-test.git"
+    "url": "https://github.com/DandyDeveloper/express-project"
   },
-  "author": "givery Inc.",
+  "author": "DandyDeveloper",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shunjikonishi/sample-test/issues"
+    "url": "https://github.com/DandyDeveloper/express-project"
   },
-  "homepage": "https://github.com/shunjikonishi/sample-test",
+  "homepage": "https://github.com/DandyDeveloper/express-project",
   "devDependencies": {
-    "MD5": "~1.2.1",
-    "api-first-spec": "^0.1.7",
+    "babel": "^6.5.2",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
     "body-parser": "~1.12.0",
-    "chai": "^2.2.0",
     "express": "~4.12.2",
+    "fs": "0.0.1-security",
     "moment": "^2.9.0",
     "mysql": "^2.6.1",
-    "sql-fixtures": "^0.9.0"
+    "sha1": "*",
+    "sql-fixtures": "^0.9.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.13.0"
   },
   "dependencies": {
     "connect-flash": "^0.1.1",
     "consolidate": "^0.14.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",
+    "eslint": "^3.7.1",
     "express-session": "^1.14.1",
+    "http-proxy": "^1.15.1",
     "mustache": "^2.2.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

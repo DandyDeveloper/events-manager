@@ -1,8 +1,8 @@
 module.exports = {
   connectionLimit : 100,
   host     : 'localhost',
-  user     : 'vagrant',
-  password : 'vagrant',
-  database : 'vagrant',
+  user     : 'express',
+  password : 'Password1',
+  database : 'express',
   debug    :  false
 }

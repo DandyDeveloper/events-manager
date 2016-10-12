@@ -1,7 +1,7 @@
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 var mysql           = require('mysql');
-var md5             = require('md5');
+var sha1            = require('sha1');
 
 var dbConfiguration = require('../config/database.js')
 var connection = mysql.createConnection(dbConfiguration);
@@ -32,7 +32,7 @@ module.exports = function(passport) {
            if (rows.length) {
               return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
            } else {
-              var passwordHash = md5(req.body.password)
+              var passwordHash = sha1(req.body.password)
               var newUserMysql = new Object();
               newUserMysql.name     = req.body.name;
               newUserMysql.password = passwordHash;
@@ -57,7 +57,7 @@ module.exports = function(passport) {
         passReqToCallback : true
       },
       function(req, email, password, done) { // callback with email and password from our form
-        var passwordHash = md5(password);
+        var passwordHash = sha1(password);
         connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows) {
 			     if (err)
               return done(err);
