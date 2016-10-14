@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
+
+import $ from 'jquery';
+import jQuery from 'jquery';
+window.jQuery = jQuery;
+
+import TopMenu from './components/TopMenu';
+import SideMenu from './components/SideMenu';
 import './App.css';
 
-class App extends Component {
+export default class App extends React.Component {
   constructor() {
     super(); 
     this.state = { 
 
     }; 
   }
-
+	componentWillMount() {
+        require('../semantic/dist/semantic.min.css');
+        require('../semantic/dist/semantic.min.js');
+  }
   render() {
+
     return (
       <div className="App">
         <TopMenu state={this.state} />
@@ -22,16 +33,7 @@ class App extends Component {
 
                     </div>
                     <div className="twelve wide column">
-                        <Breadcrumbs
-                            routes={this.props.routes}
-                            params={this.props.params}
-                            separator={sep}
-                            wrapperElement="div"
-                            wrapperClass="ui large breadcrumb"
-                            itemElement="div"
-                            itemClass="section"
-                            activeItemClass="active"
-                        />
+
                     </div>
                 </div>
                 <div className="four wide column">
@@ -85,10 +87,7 @@ class App extends Component {
           </div>
         </div>
 
-        <Alert stack={{limit: 3}} position="top-right" timeout={5000} offset={50} />
         </div>
     );
   }
 }
-
-export default App;
