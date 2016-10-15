@@ -4,7 +4,6 @@ import { Link, IndexLink } from 'react-router';
 import TopMenu from './TopMenu'; 
 import SideMenu from './SideMenu'; 
 
-import '../App.css';
 import '../../semantic/dist/semantic.min.css';
 import '../../semantic/dist/semantic.min.js';
 

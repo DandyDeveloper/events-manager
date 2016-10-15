@@ -1,8 +1,7 @@
 import React from 'react';
 
-import './App.css';
-import '../semantic/dist/semantic.min.css';
-import '../semantic/dist/semantic.min.js';
+import '../../semantic/dist/semantic.min.css';
+import '../../semantic/dist/semantic.min.js';
 
 export default class App extends React.Component {
   constructor() {
