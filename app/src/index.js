@@ -6,5 +6,5 @@ import './index.css';
 
 ReactDOM.render(
   <Router history={browserHistory} routes={routes} />,
-  document.getElementById('root')
+  document.getElementById('app')
 );

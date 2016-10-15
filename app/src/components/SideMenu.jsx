@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, IndexLink } from 'react-router';
 
 var logo = require('../../public/img/logo.png')
 
@@ -12,7 +13,10 @@ export default class SideMenu extends React.Component {
     render() { 
         var sideMenuStyle =  {
             left: '0px', 
-            float: 'left'
+            top: '0px', 
+            width: '5em', 
+            height: '100%', 
+            marginTop: '0px'
         };
         var logoStyle = { 
             width: '35px',
@@ -20,35 +24,18 @@ export default class SideMenu extends React.Component {
             marginBottom: '1em'
         };
         return (
-            <div className="toc">
-                <div className="ui vertical inverted sticky menu" style={sideMenuStyle}>
-                    <div className="item">
-                        <a className="ui logo icon image" style={logoStyle} href="/"><img alt="logo" src={logo}/></a>
-                        <a href="/"><b>Event Management</b></a>
-                    <a className="item" href="/introduction/getting-started.html">
-                        <b>Getting Started</b>
-                    </a>
-                    <a className="item" href="/introduction/new.html">
-                        <b>New in 2.2</b>
-                    </a>
-                    <div className="item">
-                        <div className="header">Introduction</div>
-                        <div className="menu">
-                            <a className="item" href="/introduction/integrations.html">
-                            Integrations
-                            </a>
-                            <a className="item" href="/introduction/build-tools.html">
-                            Build Tools
-                            </a>
-                            <a className="item" href="/introduction/advanced-usage.html">
-                            Recipes
-                            </a>
-                            <a className="item" href="/introduction/glossary.html">
-                            Glossary
-                            </a>
-                        </div>
-                    </div>
-                    </div>
+            <div className="ui vertical sticky menu fixed top" style={sideMenuStyle}>
+                <div className="item">
+                    <Link to="/" className="ui logo icon image" style={logoStyle}><img alt="logo" src={logo}/></Link>
+                <Link to="/profile"  activeClassName="active orange" className="item">
+                    <b>P</b>
+                </Link>
+                <Link to="/events" activeClassName="active orange" className="item">
+                    <b>E</b>
+                </Link>
+                <Link to="/upcoming_events" activeClassName="active orange" className="item">
+                    <b>UE</b>
+                </Link>
                 </div>
             </div>
         );

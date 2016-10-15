@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link, IndexLink } from 'react-router';
 
 import TopMenu from './TopMenu'; 
 import SideMenu from './SideMenu'; 
@@ -7,7 +8,7 @@ import '../App.css';
 import '../../semantic/dist/semantic.min.css';
 import '../../semantic/dist/semantic.min.js';
 
-export default class Home extends React.Component {
+export default class Home extends Component {
   constructor() {
     super(); 
     this.state = { 
@@ -19,10 +20,18 @@ export default class Home extends React.Component {
   }
   render() {
     return (
-      <div className="ui">
-        <SideMenu />
+    <div>
+      <div className="ui"> 
         <TopMenu />
+        <SideMenu />
+      </div>
+      <div className="ui grid">
+        <div className="two wide column row" id="spacing" /> 
+        <div className="ui divider content"> 
+          {this.props.children}
+        </div>
       </div>  
+    </div>
     );
   }
 }

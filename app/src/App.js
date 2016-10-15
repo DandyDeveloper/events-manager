@@ -1,8 +1,5 @@
 import React from 'react';
 
-import TopMenu from './components/TopMenu'; 
-import SideMenu from './components/SideMenu'; 
-
 import './App.css';
 import '../semantic/dist/semantic.min.css';
 import '../semantic/dist/semantic.min.js';
@@ -20,7 +17,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="ui">
-      
+
       </div>  
     );
   }

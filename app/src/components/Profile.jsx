@@ -8,21 +8,21 @@ export default class ProfilePage extends Component  {
 
     render() { 
         return (
-            <div class="ui container">
-                <div class="page-header text-center">
-                    <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+            <div>
+                <div className="page-header text-center">
+                    <h1><span className="fa fa-anchor"></span>Profile Page</h1>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="well">
-                            <h3><span class="fa fa-user"></span> Local</h3>
+                <div className="row">
+                    <div className="col-sm-6">
+                        <div className="well">
+                            <h3><span className="fa fa-user"></span> Local</h3>
                                 <p><strong>id</strong>: Username</p>
-                                <p><strong>email</strong>: Email Address</p>
+                                <input type="text" placeholder="Email..." />
                                 <p><strong>password</strong>: NO PASSWORD BAD.</p>
                         </div>
-                   </div>
+                    </div>
                 </div>
-            </div>  
+            </div>
         );
     }
 }

@@ -10,14 +10,15 @@ export default class TopMenu extends React.Component {
     }
     render() { 
         var topMenuStyle = { 
-            marginTop: '0',
+            marginTop: '1em',
             float: 'right'
         }
         return ( 
-            <div className="ui secondary  menu" style={topMenuStyle}>
+            <div className="topnav ui secondary menu sticky stickyTop header" style={topMenuStyle} >
                 <IndexLink to="/" activeClassName="active orange" className="item">Home</IndexLink>
-                <Link  to="/profile" activeClassName="active orange" className="item">Profile</Link>
-                <Link  to="/events" activeClassName="active orange" className="item">Events</Link>
+                <Link to="/profile" activeClassName="active orange" className="item">Profile</Link>
+                <Link to="/events" activeClassName="active orange" className="item">My Events</Link>
+                <Link to="/upcoming_events" activeClassName="active orange" className="item">Upcoming Events</Link>
                 <div className="right menu">
                     <div className="item">
                     <div className="ui icon input">
