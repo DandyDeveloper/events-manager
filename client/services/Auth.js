@@ -14,7 +14,7 @@ module.exports = {
     }
     post(domain + '/api/auth/login', {email: email, password: pass})
        .then((data) => {
-         localStorage.token = data.token
+         localStorage.token = "fbmadfbmafdimbadofbmdofi3";
          if (cb) cb(true)
          this.onChange(true)
        })
@@ -28,13 +28,17 @@ module.exports = {
       return (typeof window !== "undefined") ? localStorage.token : undefined;
     },
 
-    logout(cb) {
-      get('/api/auth/logout')
-        .then((g) => {
+    logout(cb) {     
+      get(domain + '/api/auth/logout')
+        //After calling signout in API - Remove localStorage
+        .then((data) => {
           delete localStorage.token
+          console.log("Logout post delete: ", localStorage.token);
           if (cb) cb()
           this.onChange(false)
-        }).catch((err) => {
+        })
+        //Catch Errors
+        .catch((err) => {
           console.log(err);
         });
     },

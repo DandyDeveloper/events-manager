@@ -43,7 +43,7 @@ router.use(function(req,res,next){//For logging
 
 //routes
 require('./config/passport')(passport);
-require('./views/routes.js')(app,passport);
+require('./routes/auth.js')(app,passport);
 
 app.listen(port,'0.0.0.0', function(){
       console.log("All right ! I am alive on " + port + ".");

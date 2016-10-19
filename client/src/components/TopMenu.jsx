@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
-import auth from '../../services/Auth';
+import { Link, IndexLink, browserHistory } from 'react-router';
+import auth from '../../services/Auth'; 
 
 export default class TopMenu extends React.Component { 
     constructor(props, context) { 
@@ -16,7 +16,7 @@ export default class TopMenu extends React.Component {
     updateAuth(loggedIn) {
         this.setState({loggedIn: loggedIn});
         if(loggedIn){
-            this.router.push('/');
+            browserHistory.push('/');
         }
     }
     componentWillMount() {
@@ -28,7 +28,7 @@ export default class TopMenu extends React.Component {
             float: 'right'
         }
         return ( 
-            <div className="topnav ui secondary menu sticky stickyTop header" style={topMenuStyle} >
+            <div className="ui pointing menu">
                 <IndexLink to="/" activeClassName="active orange" className="item">Home</IndexLink>
                 <Link to="/profile" activeClassName="active orange" className="item">Profile</Link>
                 <Link to="/events" activeClassName="active orange" className="item">My Events</Link>

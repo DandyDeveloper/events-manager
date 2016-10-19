@@ -13,8 +13,8 @@ module.exports = function(passport) {
     });
 
     passport.deserializeUser(function(id, done) {
-      connection.query("select * from users where id = "+ id, function(err,rows) {
-  			done(err, rows[0]);
+      connection.query("select * from users where id = "+ id, function(err,user) {
+  			done(err, user[0]);
   		});
     });
 
@@ -24,13 +24,13 @@ module.exports = function(passport) {
         passReqToCallback : true
       },
       function(req, email, password, done) {
-        connection.query("select * from users where email = '"+ email +"'",function(err,rows) {
-	         console.log(rows);
+        connection.query("select * from users where email = '"+ email +"'",function(err,user) {
+	         console.log(user);
            console.log("above row object");
            if (err)
               return done(err);
-           if (rows.length) {
-              return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+           if (user.length) {
+              return done(null, false);
            } else {
               var passwordHash = sha1(req.body.password)
               var newUserMysql = new Object();
@@ -42,8 +42,8 @@ module.exports = function(passport) {
   				    var insertQuery = "INSERT INTO users (name, password, email, group_id) values ('"+ req.body.name +"','"+ passwordHash +"','"+ req.body.email +"','"+ req.body.group_id +"')";
   					  console.log(insertQuery);
 
-              connection.query(insertQuery,function(err,rows){
-                newUserMysql.id = rows.insertId;
+              connection.query(insertQuery,function(err,user){
+                newUserMysql.id = user.insertId;
 
                 return done(null, newUserMysql);
   				    });
@@ -58,18 +58,18 @@ module.exports = function(passport) {
       },
       function(req, email, password, done) { // callback with email and password from our form
         var passwordHash = sha1(password);
-        connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,rows) {
+        connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'",function(err,user) {
 			     if (err)
               return done(err);
-           if (!rows.length) {
-              return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+           if (!user.length) {
+              return done(null, false); 
            }
 
   			// if the user is found but the password is wrong
-           if (!( rows[0].password == passwordHash))
-              return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-  			              // all is well, return successful user
-           return done(null, rows[0]);
+           if (!( user[0].password == passwordHash))
+              return done(null, false); 
+        // all is well, return successful user
+           return done(null, user[0]);
 		     });
       })
     );

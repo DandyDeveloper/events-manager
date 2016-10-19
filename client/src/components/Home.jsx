@@ -7,28 +7,18 @@ import SideMenu from './SideMenu';
 import '../../semantic/dist/semantic.min.css';
 import '../../semantic/dist/semantic.min.js';
 
-export default class Home extends Component {
-  constructor() {
-    super(); 
-    this.state = { 
 
-    }; 
-  }
+export default class Home extends Component {
+
 	componentWillMount() {
 
   }
   render() {
     return (
     <div>
-      <div className="ui"> 
-        <TopMenu />
-        <SideMenu />
-      </div>
-      <div className="ui grid">
-        <div className="two wide column row" id="spacing" /> 
-        <div className="ui divider content"> 
+      <TopMenu />
+      <div className="ui segment container">
           {this.props.children}
-        </div>
       </div>  
     </div>
     );
